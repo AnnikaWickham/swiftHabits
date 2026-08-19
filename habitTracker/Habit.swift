@@ -26,8 +26,27 @@ struct Habit: Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
     var colorHex: String          // store the user's chosen color as hex, convert to Color when displaying
-    var percent: Int              // only used for percentage habits (e.g. screen time goal in minutes)
+    var targetValue: Int
+    var actualValue: Int              // only used for percentage habits (e.g. screen time goal in minutes)
     var completions: Set<Date>    // yes/no: dates marked done. For percentage habits, think about whether this needs to pair a date WITH a value...
     var habitDescription: String? // optional, for the "expand for more" flow
+    
+//    init(name: String, colorHex: String, targetValue: Int, actualValue: Int, completions: Set<Date>, habitDescription: String? = nil) {
+//        self.name = name
+//        self.colorHex = colorHex
+//        self.targetValue = targetValue
+//        self.actualValue = actualValue
+//        self.completions = completions
+//        self.habitDescription = habitDescription
+//    }
+    
+    func getPercent() -> Int {
+        return (actualValue/targetValue) * 100
+    }
+    
+    func addDate() {
+        
+    }
 }
+
 
