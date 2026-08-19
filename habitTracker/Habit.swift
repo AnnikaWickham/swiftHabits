@@ -6,6 +6,8 @@
 // What is a habit??
 //
 
+import Foundation
+
 /*
  NOTES:
  - figure out what UUID is and how it works
@@ -17,9 +19,9 @@
  */
 
 struct Habit: Identifiable, Codable {
-    var id: UUID = UUID()
-    var name: String
-    var colorHex: String
-    var occurrences: [Occurrence]   // array, not Set — for the reason above
+    var id: UUID = UUID()                // easy way to identify instances of this struct
+    var name: String                     // name of this habit chosen by the user
+    var colorHex: String                 // color chosen by user to show this habit on the calendar
+    var occurrences: [Occurrence] = []   // array of daily occurances for this particular habit
 }
 
