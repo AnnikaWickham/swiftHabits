@@ -6,6 +6,8 @@
 // What is a habit??
 //
 
+import Foundation
+
 /*
   Create Habit.swift, write your own version of the struct above (fix the percentage/date problem first)
   Create HabitType.swift (or keep in the same file) and decide the enum shape
@@ -24,13 +26,8 @@ struct Habit: Identifiable, Codable {
     var id: UUID = UUID()
     var name: String
     var colorHex: String          // store the user's chosen color as hex, convert to Color when displaying
-    var type: HabitType           // yesNo or percentage — you'll define this below
-    var targetValue: Double?      // only used for percentage habits (e.g. screen time goal in minutes)
+    var percent: Int              // only used for percentage habits (e.g. screen time goal in minutes)
     var completions: Set<Date>    // yes/no: dates marked done. For percentage habits, think about whether this needs to pair a date WITH a value...
     var habitDescription: String? // optional, for the "expand for more" flow
 }
 
-enum HabitType: Codable {
-    case yesNo
-    case percentage
-}
