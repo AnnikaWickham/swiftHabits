@@ -8,12 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    var habits: [Habit] =
+    [
+        Habit(name: "Habit1", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")]),
+        Habit(name: "Habit2", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.distantFuture, percent: 60, description: "habit2 descript")]),
+        Habit(name: "Habit3", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")])
+    ]
+    
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("OKAY, world!")
+            var test: String = "HI"
+            Button("Button") {
+                test = "BYE"
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.purple) // Changes the fill color
+            Text(test)
         }
         .padding()
     }
