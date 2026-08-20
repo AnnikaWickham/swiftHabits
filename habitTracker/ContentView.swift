@@ -18,23 +18,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("OKAY, world!")
             HStack {
                 Button("1") {
                     test = String(habits[0].occurrences[0].date.formatted())
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.purple) // Changes the fill color
+                .tint(.blue) // Changes the fill color
                 Button("2") {
-                    test = habits[1].name
+                    test = String(habits[1].occurrences[0].date.formatted())
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.purple) // Changes the fill color
+                .tint(.pink) // Changes the fill color
                 Button("3") {
-                    test = habits[2].name
+                    test = String(habits[2].occurrences[0].date.formatted())
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.purple) // Changes the fill color
