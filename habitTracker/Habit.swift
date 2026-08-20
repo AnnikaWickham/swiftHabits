@@ -12,6 +12,9 @@ import Foundation
  NOTES:
  - figure out what UUID is and how it works
  - figure out how date works
+ - instead of making the user pick a color, have a random color be picked and the user can change the color later.
+ - idk how but if a user inputs a date that already has an occurance, it like pulls up that occurance with the stuff they already put already filled in
+        then they can like edit it, or delete it. but show their previous entry (idk how)
  - you literally got this, light work, fun project, dubs
  */
 
@@ -33,6 +36,21 @@ struct Habit: Identifiable, Codable {
         } else {
             occurrences.append(Occurrence(date: dateIn, percent: percentIn, description: descriptionIn))
         }
+    }
+    
+    // Make a delete button at the bottom when adding an occurance (or just the checkbox being unchecked)
+    mutating func deleteOccurrance() {
+        
+    }
+    
+    //if user doesnt select color, we pick a random one.
+    mutating func randColor() {
+        
+    }
+    
+    //lets user change color after habit is already created
+    mutating func changeColor() {
+        
     }
 }
 

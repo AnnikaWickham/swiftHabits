@@ -14,7 +14,7 @@ struct ContentView: View {
         Habit(name: "Habit2", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.distantFuture, percent: 60, description: "habit2 descript")]),
         Habit(name: "Habit3", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")])
     ]
-    
+    @State private var test: String = "HI"
     
     var body: some View {
         VStack {
@@ -22,7 +22,6 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("OKAY, world!")
-            var test: String = "HI"
             Button("Button") {
                 test = "BYE"
             }
