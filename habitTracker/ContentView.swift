@@ -22,11 +22,23 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("OKAY, world!")
-            Button("Button") {
-                test = "BYE"
+            HStack {
+                Button("1") {
+                    test = String(habits[0].occurrences[0].date.formatted())
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.purple) // Changes the fill color
+                Button("2") {
+                    test = habits[1].name
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.purple) // Changes the fill color
+                Button("3") {
+                    test = habits[2].name
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.purple) // Changes the fill color
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.purple) // Changes the fill color
             Text(test)
         }
         .padding()
