@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var habits: [Habit] =
+    @State private var habits: [Habit] =
     [
         Habit(name: "Habit1", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")]),
         Habit(name: "Habit2", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.distantFuture, percent: 60, description: "habit2 descript")]),
@@ -21,23 +21,22 @@ struct ContentView: View {
             Color.gray.brightness(-0.3)
                 .ignoresSafeArea()
             VStack {
-                HStack {
-                    Button("1") {
-                        test = String(habits[0].occurrences[0].date.formatted())
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.blue) // Changes the fill color
-                    Button("2") {
-                        test = String(habits[1].occurrences[0].date.formatted())
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.pink) // Changes the fill color
-                    Button("3") {
-                        test = String(habits[2].occurrences[0].date.formatted())
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.purple) // Changes the fill color
+                Button("Add Habit") {
+                    self.habits.append(Habit(name: "NEW HABIT", colorHex: "#fff10f"))
+                    test = self.habits.map { $0.name }.joined(separator: ", ")
                 }
+                .buttonStyle(.borderedProminent)
+                .tint(.black) // Changes the fill color
+                Button("2") {
+                    test = String(habits[1].occurrences[0].date.formatted())
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.black) // Changes the fill color
+                Button("3") {
+                    test = String(habits[2].occurrences[0].date.formatted())
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.black) // Changes the fill color
                 Text(test)
             }
             .padding()
