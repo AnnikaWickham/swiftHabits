@@ -18,6 +18,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Color.gray
+                .ignoresSafeArea()
             HStack {
                 Button("1") {
                     test = String(habits[0].occurrences[0].date.formatted())
