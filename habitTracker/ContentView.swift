@@ -14,7 +14,6 @@ struct ContentView: View {
         Habit(name: "Habit2", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.distantFuture, percent: 60, description: "habit2 descript")]),
         Habit(name: "Habit3", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")])
     ]
-    @State private var test: String = "HI"
     
     var body: some View {
         ZStack {
@@ -23,21 +22,17 @@ struct ContentView: View {
             VStack {
                 Button("Add Habit") {
                     self.habits.append(Habit(name: "NEW HABIT", colorHex: "#fff10f"))
-                    test = self.habits.map { $0.name }.joined(separator: ", ")
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.black) // Changes the fill color
-                Button("2") {
-                    test = String(habits[1].occurrences[0].date.formatted())
+                ForEach(habits) { habit in
+                    Button(habit.name) {
+                        
+                    }
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.black) // Changes the fill color
-                Button("3") {
-                    test = String(habits[2].occurrences[0].date.formatted())
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.black) // Changes the fill color
-                Text(test)
+                .tint(.gray) // Changes the fill color
+                
             }
             .padding()
         }
