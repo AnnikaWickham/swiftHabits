@@ -17,29 +17,31 @@ struct ContentView: View {
     @State private var test: String = "HI"
     
     var body: some View {
-        VStack {
-            Color.gray
+        ZStack {
+            Color.gray.brightness(-0.3)
                 .ignoresSafeArea()
-            HStack {
-                Button("1") {
-                    test = String(habits[0].occurrences[0].date.formatted())
+            VStack {
+                HStack {
+                    Button("1") {
+                        test = String(habits[0].occurrences[0].date.formatted())
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue) // Changes the fill color
+                    Button("2") {
+                        test = String(habits[1].occurrences[0].date.formatted())
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.pink) // Changes the fill color
+                    Button("3") {
+                        test = String(habits[2].occurrences[0].date.formatted())
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.purple) // Changes the fill color
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.blue) // Changes the fill color
-                Button("2") {
-                    test = String(habits[1].occurrences[0].date.formatted())
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.pink) // Changes the fill color
-                Button("3") {
-                    test = String(habits[2].occurrences[0].date.formatted())
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.purple) // Changes the fill color
+                Text(test)
             }
-            Text(test)
+            .padding()
         }
-        .padding()
     }
 }
 
