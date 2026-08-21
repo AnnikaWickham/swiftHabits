@@ -8,33 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var habits: [Habit] =
-    [
-        Habit(name: "Habit1", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")]),
-        Habit(name: "Habit2", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.distantFuture, percent: 60, description: "habit2 descript")]),
-        Habit(name: "Habit3", colorHex: "#ffffff", occurrences: [Occurrence(date: Date.now, percent: 100, description: "")])
-    ]
-    
+    @State private var habits: [Habit] = []
+    @State private var showingAddHabit = false   // controls the sheet
+
     var body: some View {
         ZStack {
             Color.gray.brightness(-0.3)
                 .ignoresSafeArea()
             VStack {
+                ForEach(habits) { habit in
+                    Text(habit.name)
+                }
                 Button("Add Habit") {
-                    self.habits.append(Habit(name: "NEW HABIT", colorHex: "#fff10f"))
+                    showingAddHabit = true            // just flip it to true
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.black) // Changes the fill color
-                ForEach(habits) { habit in
-                    Button(habit.name) {
-                        
+                .tint(.gray)
+            }
+            .sheet(isPresented: $showingAddHabit) {   // $ = give the sheet a live connection
+                AddHabitView(habits: $habits)         // pass habits as a binding too, so the new view can append to it
+            }
+        }
+    }
+}
+
+struct AddHabitView: View {
+    @Binding var habits: [Habit]        // "I don't own this array, but I can read/write it"
+    @Environment(\.dismiss) var dismiss // lets this view close itself
+
+    @State private var newName: String = ""
+    @State private var newColor: Color = .blue
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                TextField("Habit name", text: $newName)   // $ again — TextField needs to write back into newName
+                ColorPicker("Color", selection: $newColor)
+            }
+            .navigationTitle("New Habit")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        habits.append(Habit(name: newName, colorHex: "#000000", occurrences: []))
+                        dismiss()
                     }
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.gray) // Changes the fill color
-                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
+                }
             }
-            .padding()
         }
     }
 }
