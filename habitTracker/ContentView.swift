@@ -4,6 +4,7 @@
 //
 //  Created by Annika Wickham on 8/17/26.
 //
+//next make it so you can add occurances (by little check boxes or by clicking a habit (which pulls up a different screen)
 
 import SwiftUI
 
@@ -37,7 +38,7 @@ struct AddHabitView: View {
     @Environment(\.dismiss) var dismiss // lets this view close itself
 
     @State private var newName: String = ""
-    @State private var newColor: Color = .blue
+    @State private var newColor: Color = .blue  //default color is blue, all habits are blue unless changed
 
     var body: some View {
         NavigationStack {
@@ -48,7 +49,7 @@ struct AddHabitView: View {
             .navigationTitle("New Habit")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button("Save") { //change color to actual color
                         habits.append(Habit(name: newName, colorHex: "#000000", occurrences: []))
                         dismiss()
                     }
