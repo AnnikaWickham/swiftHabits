@@ -33,6 +33,7 @@ struct ContentView: View {
     }
 }
 
+// Seperate little pop up used to add a habit
 struct AddHabitView: View {
     @Binding var habits: [Habit]        // "I don't own this array, but I can read/write it"
     @Environment(\.dismiss) var dismiss // lets this view close itself
