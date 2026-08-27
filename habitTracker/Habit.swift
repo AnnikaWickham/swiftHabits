@@ -49,8 +49,8 @@ struct Habit: Identifiable, Codable {
     }
     
     //lets user change color after habit is already created
-    mutating func changeColor() {
-        
+    mutating func changeColor(color: String) {
+        colorHex = color
     }
 }
 
