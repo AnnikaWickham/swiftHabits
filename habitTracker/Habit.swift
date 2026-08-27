@@ -43,7 +43,7 @@ struct Habit: Identifiable, Codable {
         occurrences.removeAll(where: { $0.date == date })
     }
     
-    //if user doesnt select color, we pick a random one.
+    //if user doesnt select color, we pick a random one. or just get rid of this and have default be blue
     mutating func randColor() {
         
     }
