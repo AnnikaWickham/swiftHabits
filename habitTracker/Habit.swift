@@ -39,8 +39,8 @@ struct Habit: Identifiable, Codable {
     }
     
     // Make a delete button at the bottom when adding an occurance (or just the checkbox being unchecked)
-    mutating func deleteOccurrance() {
-        
+    mutating func deleteOccurrance(date: Date) {
+        occurrences.removeAll(where: { $0.date == date })
     }
     
     //if user doesnt select color, we pick a random one.
